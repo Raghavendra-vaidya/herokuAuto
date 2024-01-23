@@ -1,5 +1,6 @@
 package com.heroku.configuration;
 
+import com.heroku.projectUtils.GetData;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,7 +11,11 @@ import java.time.Duration;
 
 public class CreateBrowser {
     private  static  WebDriver driver;
-    public  static  String url="https://the-internet.herokuapp.com/";
+
+    final static String configFile = "src/main/resources/config.properties";
+    public  static  String url= GetData.fromProperties(configFile,"URL");
+    static  Integer implicitWaitTime = Integer.valueOf(GetData.fromProperties(configFile,"IMPLICIT_TIMEOUT"));
+
 
     public static WebDriver instance (String browser){
 
@@ -25,7 +30,7 @@ public class CreateBrowser {
         }
         driver.manage().window().maximize();
         driver.get(url);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitTime));
         return driver;
     }
 }
