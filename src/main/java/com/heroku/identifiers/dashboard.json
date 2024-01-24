@@ -1,0 +1,5 @@
+{
+  "contentID": "content",
+  "basicAuth": "//a[text()='Basic Auth']",
+  "formAuth": "//a[text()='Form Authentication']"
+}

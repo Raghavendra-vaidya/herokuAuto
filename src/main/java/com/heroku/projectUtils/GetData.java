@@ -1,5 +1,7 @@
 package com.heroku.projectUtils;
 
+import org.apache.poi.ss.usermodel.*;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,6 +17,22 @@ public class GetData {
             Properties prop = new Properties();
             prop.load(fis);
             data = prop.getProperty(KEY);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    public static String fromExcel(String filePath, String sheetName, int rIndex, int cIndex){
+        String data = null;
+        try{
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+            Workbook wb = WorkbookFactory.create(fileInputStream);
+            Sheet st = wb.getSheet(sheetName);
+            Row r = st.getRow(rIndex);
+            Cell cell = r.getCell(cIndex);
+            data = new DataFormatter().formatCellValue(cell);
         }
         catch (Exception e){
             e.printStackTrace();
