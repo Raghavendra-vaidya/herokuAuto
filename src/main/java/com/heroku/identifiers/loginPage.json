@@ -1,0 +1,6 @@
+{
+  "allContentID": "content",
+  "usernameID": "username",
+  "passwordID": "password",
+  "loginBtn": "//button[@type='submit']"
+}
