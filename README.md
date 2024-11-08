@@ -1,2 +1,2 @@
 # herokuAuto
-Automate herokuapp using Java Selenium 4
+Automate herokuapp using Java Selenium 4.
